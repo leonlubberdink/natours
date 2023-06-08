@@ -9,6 +9,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 var xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -121,11 +122,7 @@ app.use(
   })
 );
 
-// // Middleware for testing purposes
-// app.use((req, res, next) => {
-//   console.log(req.cookies);
-//   next();
-// });
+app.use(compression());
 
 // 2 ROUTES
 app.use('/', viewRouter);
