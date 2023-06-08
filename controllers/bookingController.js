@@ -46,7 +46,6 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
   const { tour, user, price } = req.query;
 
   if (!tour || !user || !price) {
-    console.log('No user, tour or price!');
     return next();
   }
 
