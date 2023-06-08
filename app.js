@@ -1,5 +1,4 @@
 const path = require('path');
-
 const pug = require('pug');
 const express = require('express');
 const morgan = require('morgan');
