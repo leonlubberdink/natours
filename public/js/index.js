@@ -13,7 +13,6 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const logoutBtn = document.querySelector('.nav__el--logout');
 const bookBtn = document.getElementById('book-tour');
-const alertMessage = document.querySelector('body').dataset.alert;
 
 // DELEGATION
 if (mapBox) {
@@ -74,4 +73,5 @@ if (bookBtn) {
   });
 }
 
-if (alertMessage) showAlert('succes', alertMessage, 15);
+const alertMessage = document.querySelector('body').dataset.alert;
+if (alertMessage) showAlert('success', alertMessage, 15);
