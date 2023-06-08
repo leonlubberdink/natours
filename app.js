@@ -9,6 +9,7 @@ var xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -32,6 +33,10 @@ const limiter = rateLimit({
 });
 
 // 1) GLOBAL MIDDLEWARES
+// Implement CORS
+app.use(cors());
+
+app.options('*', cors());
 
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
