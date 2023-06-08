@@ -15,6 +15,7 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
+const bookingController = require('./controllers/bookingController');
 const viewRouter = require('./routes/viewRoutes');
 
 const AppError = require('./utils/appError');
@@ -96,6 +97,13 @@ if (process.env.NODE_ENV === 'development') {
 
 // Limit reqs from same IP
 app.use('/api', limiter);
+
+// Implemnted Strip webhook for checkout. Needs to be raw data, not parsed, therefor implemented here.
+app.post(
+  '/webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  bookingController.webhookCheckout
+);
 
 // Parse incoming requests with JSON payloads (body-parser)
 app.use(express.json({ limit: '10kb' }));
